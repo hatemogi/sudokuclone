@@ -23,7 +23,7 @@ class BoardTest: XCTestCase {
         678 912 345
         912 345 678
     """
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -35,21 +35,21 @@ class BoardTest: XCTestCase {
     func testDescription() {
         let board = Board()
         board.setRow(row: 0, numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9])
-        print(board.description())
+        XCTAssert(board.description().starts(with: "123456789\n"))
     }
 
     func testValid() {
         let board = Board()
-        XCTAssert(board.isValid(numbers: [1,2,3,4,5,6,7,8,9]))
-        XCTAssert(board.isValid(numbers: [0,2,3,4,5,6,7,8,0]))
-        XCTAssert(!board.isValid(numbers: [0,2,2,4,5,6,7,8,0]))
-        XCTAssert(!board.isValid(numbers: [2,2,4,5,6,7,8,0]))
+        XCTAssert(board.isValid([1,2,3,4,5,6,7,8,9]))
+        XCTAssert(board.isValid([0,2,3,4,5,6,7,8,0]), "0 is okay to be duplicated")
+        XCTAssert(!board.isValid([0,2,2,4,5,6,7,8,0]), "other than 0 duplication")
+        XCTAssert(!board.isValid([2,2,4,5,6,7,8,0]), "should have 9 elements")
     }
 
     func testComplete() {
         let board = Board()
-        XCTAssert(board.hasComplete(numbers: [1,2,3,4,5,6,7,8,9]))
-        XCTAssert(!board.hasComplete(numbers: [0,2,3,4,5,6,7,8,0]))
+        XCTAssert(board.hasComplete([1,2,3,4,5,6,7,8,9]))
+        XCTAssert(!board.hasComplete([0,2,3,4,5,6,7,8,0]), "has no duplication but not completed yet")
     }
 
     func testParse() {
@@ -72,12 +72,4 @@ class BoardTest: XCTestCase {
         XCTAssert(board.isValid())
         XCTAssert(!board.hasComplete())
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

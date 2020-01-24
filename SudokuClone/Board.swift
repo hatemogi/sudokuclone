@@ -8,6 +8,13 @@
 
 import Foundation
 
+/*
+ Board class is responsible for...
+ - maintain numbers
+ - validation whether the numbers are ok and has no duplications
+ - checking completeness of numbers on entire Board
+
+ */
 class Board {
     var rows: Array<Array<Int>> = []
     let size = 9
@@ -25,17 +32,23 @@ class Board {
         rows[row] = numbers
     }
     
-    func isValid(numbers: [Int]) -> Bool {
+    func isValid(_ numbers: [Int]) -> Bool {
         let nonEmpty = numbers.filter { n in 1 <= n && n <= size }
         let numset = Set(nonEmpty)
-        return numbers.count == rows.count   // valid size
+        return numbers.count == rows.count    // valid size
             && numset.count == nonEmpty.count // no duplicates
     }
     
-    func hasComplete(numbers: [Int]) -> Bool {
+    func hasComplete(_ numbers: [Int]) -> Bool {
         return Set(numbers.filter { n in 1 <= n && n <= size }).count == size
     }
     
+    /*
+     checks if the [condition] is met for all...
+     - rows
+     - columns
+     - sections (3x3 blocks)
+     */
     func allSatisfy(_ condition: ([Int]) -> Bool) -> Bool {
         let rows = self.rows
         let cols = (0..<size).map { c in rows.map { row in row[c] } }
@@ -48,7 +61,9 @@ class Board {
                 sections.append(rows[sr..<sr+sectionSize].flatMap { row in row[sc..<sc+sectionSize]})
             }
         }
-        return rows.allSatisfy(condition) && cols.allSatisfy(condition) && sections.allSatisfy(condition)
+        return rows.allSatisfy(condition) &&
+            cols.allSatisfy(condition) &&
+            sections.allSatisfy(condition)
     }
 
     func isValid() -> Bool {
@@ -67,6 +82,9 @@ class Board {
         }.joined(separator: "\n")
     }
     
+    /*
+     Parses string to make a Board object.
+     */
     static func from(string: String) -> Board {
         let board = Board()
         let lines = string.split(separator: "\n")
