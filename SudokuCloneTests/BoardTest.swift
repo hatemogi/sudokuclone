@@ -19,10 +19,24 @@ class BoardTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        var board = Board(size: 9)
+    func testDescription() {
+        var board = Board()
         board.setRow(row: 0, numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9])
         print(board.description())
+    }
+
+    func testValid() {
+        let board = Board()
+        XCTAssert(board.isValid(numbers: [1,2,3,4,5,6,7,8,9]))
+        XCTAssert(board.isValid(numbers: [0,2,3,4,5,6,7,8,0]))
+        XCTAssert(!board.isValid(numbers: [0,2,2,4,5,6,7,8,0]))
+        XCTAssert(!board.isValid(numbers: [2,2,4,5,6,7,8,0]))
+    }
+
+    func testComplete() {
+        let board = Board()
+        XCTAssert(board.hasComplete(numbers: [1,2,3,4,5,6,7,8,9]))
+        XCTAssert(!board.hasComplete(numbers: [0,2,3,4,5,6,7,8,0]))
     }
 
     func testPerformanceExample() {
