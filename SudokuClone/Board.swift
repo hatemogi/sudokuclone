@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Board {
+class Board {
     var rows: Array<Array<Int>> = []
     let size = 9
     
@@ -19,9 +19,9 @@ struct Board {
         }
     }
     
-    mutating func setRow(row: Int, numbers: [Int]) {
+    func setRow(row: Int, numbers: [Int]) {
         assert(numbers.count == size, "numbers must have \(size) elements")
-        assert(!numbers.contains(where: {$0 < 0 || $0 > size}))
+        assert(!numbers.contains(where: {$0 < 0 || $0 > size}), "each number must be in range 0..<\(size)")
         rows[row] = numbers
     }
     
@@ -44,4 +44,15 @@ struct Board {
         }.joined(separator: "\n")
     }
     
+    static func from(string: String) -> Board {
+        let board = Board()
+        let lines = string.split(separator: "\n")
+        assert(lines.count == board.size, "line count mismatch")
+        for r in 0..<board.size {
+            let numbers: [Int] = lines[r].replacingOccurrences(of: " ", with: "")
+                .map { c in Int(c.description)! }
+            board.setRow(row: r, numbers: numbers)
+        }
+        return board;
+    }
 }

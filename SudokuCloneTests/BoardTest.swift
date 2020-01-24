@@ -20,7 +20,7 @@ class BoardTest: XCTestCase {
     }
 
     func testDescription() {
-        var board = Board()
+        let board = Board()
         board.setRow(row: 0, numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9])
         print(board.description())
     }
@@ -39,6 +39,34 @@ class BoardTest: XCTestCase {
         XCTAssert(!board.hasComplete(numbers: [0,2,3,4,5,6,7,8,0]))
     }
 
+    func testParse() {
+        let game = """
+            123 456 789
+            456 789 123
+            089 123 456
+
+            234 567 891
+            567 801 234
+            891 234 567
+
+            345 678 912
+            678 912 345
+            912 345 678
+        """
+        XCTAssert(Board.from(string: game).description() == """
+            123456789
+            456789123
+            089123456
+            234567891
+            567801234
+            891234567
+            345678912
+            678912345
+            912345678
+            """
+        )
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
