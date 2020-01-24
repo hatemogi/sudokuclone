@@ -16,6 +16,8 @@
 		5427489A23DACB9900670F96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5427489923DACB9900670F96 /* Assets.xcassets */; };
 		5427489D23DACB9900670F96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5427489B23DACB9900670F96 /* LaunchScreen.storyboard */; };
 		542748A823DACB9900670F96 /* SudokuCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748A723DACB9900670F96 /* SudokuCloneTests.swift */; };
+		542748B323DACC5E00670F96 /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748B223DACC5E00670F96 /* BoardTest.swift */; };
+		542748B523DACC7700670F96 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748B423DACC7700670F96 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		542748A323DACB9900670F96 /* SudokuCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudokuCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		542748A723DACB9900670F96 /* SudokuCloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuCloneTests.swift; sourceTree = "<group>"; };
 		542748A923DACB9900670F96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542748B223DACC5E00670F96 /* BoardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
+		542748B423DACC7700670F96 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 				5427489923DACB9900670F96 /* Assets.xcassets */,
 				5427489B23DACB9900670F96 /* LaunchScreen.storyboard */,
 				5427489E23DACB9900670F96 /* Info.plist */,
+				542748B423DACC7700670F96 /* Board.swift */,
 			);
 			path = SudokuClone;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 			children = (
 				542748A723DACB9900670F96 /* SudokuCloneTests.swift */,
 				542748A923DACB9900670F96 /* Info.plist */,
+				542748B223DACC5E00670F96 /* BoardTest.swift */,
 			);
 			path = SudokuCloneTests;
 			sourceTree = "<group>";
@@ -210,6 +216,7 @@
 			files = (
 				5427489323DACB9700670F96 /* GameScene.swift in Sources */,
 				5427489523DACB9700670F96 /* GameViewController.swift in Sources */,
+				542748B523DACC7700670F96 /* Board.swift in Sources */,
 				5427488D23DACB9700670F96 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542748B323DACC5E00670F96 /* BoardTest.swift in Sources */,
 				542748A823DACB9900670F96 /* SudokuCloneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
