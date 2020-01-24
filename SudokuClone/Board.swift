@@ -36,6 +36,29 @@ class Board {
         return Set(numbers.filter { n in 1 <= n && n <= size }).count == size
     }
     
+    func allSatisfy(_ condition: ([Int]) -> Bool) -> Bool {
+        let rows = self.rows
+        let cols = (0..<size).map { c in rows.map { row in row[c] } }
+        let sectionSize: Int = size / 3
+        var sections: Array<Array<Int>> = []
+        for r in 0..<sectionSize {
+            let sr = r * sectionSize
+            for c in 0..<sectionSize {
+                let sc = c * sectionSize
+                sections.append(rows[sr..<sr+sectionSize].flatMap { row in row[sc..<sc+sectionSize]})
+            }
+        }
+        return rows.allSatisfy(condition) && cols.allSatisfy(condition) && sections.allSatisfy(condition)
+    }
+
+    func isValid() -> Bool {
+        return allSatisfy(isValid);
+    }
+
+    func hasComplete() -> Bool {
+        return allSatisfy(hasComplete);
+    }
+
     func description() -> String {
         rows.map { (row: Array<Int>) -> String in
             row.map { (n: Int) -> String in
@@ -50,7 +73,7 @@ class Board {
         assert(lines.count == board.size, "line count mismatch")
         for r in 0..<board.size {
             let numbers: [Int] = lines[r].replacingOccurrences(of: " ", with: "")
-                .map { c in Int(c.description)! }
+                .map { c in c.wholeNumberValue! }
             board.setRow(row: r, numbers: numbers)
         }
         return board;
