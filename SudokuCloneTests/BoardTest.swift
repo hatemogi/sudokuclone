@@ -43,13 +43,13 @@ class BoardTest: XCTestCase {
         XCTAssert(board.isValid([1,2,3,4,5,6,7,8,9]))
         XCTAssert(board.isValid([0,2,3,4,5,6,7,8,0]), "0 is okay to be duplicated")
         XCTAssert(!board.isValid([0,2,2,4,5,6,7,8,0]), "other than 0 duplication")
-        XCTAssert(!board.isValid([2,2,4,5,6,7,8,0]), "should have 9 elements")
+        XCTAssert(!board.isValid([1,2,4,5,6,7,8,0]), "should have 9 elements")
     }
 
     func testComplete() {
         let board = Board()
-        XCTAssert(board.hasComplete([1,2,3,4,5,6,7,8,9]))
-        XCTAssert(!board.hasComplete([0,2,3,4,5,6,7,8,0]), "has no duplication but not completed yet")
+        XCTAssert(board.hasComplete([1,2,3,4,5,6,7,8,9].shuffled()))
+        XCTAssert(!board.hasComplete([0,2,3,4,5,6,7,8,0]), "valid but not completed yet")
     }
 
     func testParse() {
