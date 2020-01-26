@@ -16,13 +16,13 @@ class SudokuGrid : SKNode {
     
     public init(board: Board) {
         super.init()
+        let baseX = -w * 4
+        let baseY = h * 4
         self.board = board
-        let x = -w * 4 - w / 2
-        let y = h * 3 + h / 2
         for r in 0..<9 {
             for c in 0..<9 {
-                let cell = SudokuCell(rect: CGRect(x: 0, y: 0, width: w, height: h))
-                cell.position = CGPoint(x: x + c * w, y: y - r * h)
+                let cell = SudokuCell(rect: CGRect(x: -w / 2, y: -h / 2, width: w, height: h))
+                cell.position = CGPoint(x: baseX + c * w, y: baseY - r * h)
                 cell.number = c
                 cells.append(cell)
                 addChild(cell)
@@ -36,17 +36,16 @@ class SudokuGrid : SKNode {
     }
    
     public func touch(point: CGPoint) {
-        
+        let frame = self.calculateAccumulatedFrame()
+        let row = 8 - Int(point.y - frame.minY) / w
+        let col = Int(point.x - frame.minX) / w
+        board?.rotate(row: row, col: col)
+        board?.traverse(with: self.setNumber)
+        cells[row * 9 + col].run(SKAction.init(named: "cellRotate")!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override var frame: CGRect {
-        get {
-            CGRect.init(x: 0, y: 0, width: w * 9, height: h * 9)
-        }
     }
     
 }

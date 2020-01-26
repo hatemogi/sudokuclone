@@ -98,7 +98,9 @@ class Board {
     
     // Increase a number in the position. If it is over 9, it becomes 0
     func rotate(row: Int, col: Int) -> Int {
-        return 0;
+        let cur = rows[row][col]
+        rows[row][col] = (cur + 1) % 10
+        return rows[row][col];
     }
     
     /*

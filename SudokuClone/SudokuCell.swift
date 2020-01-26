@@ -11,12 +11,14 @@ import SpriteKit
 class SudokuCell : SKNode {
     private var box : SKShapeNode?
     private var label : SKLabelNode?
+    private var _number : Int = 0
     public var number : Int {
         get {
-            return Int(label?.text ?? "0")!
+            return _number
         }
         set {
-            label?.text = String(newValue)
+            label?.text = newValue > 0 ? String(newValue) : ""
+            _number = newValue
         }
     }
     
@@ -30,7 +32,6 @@ class SudokuCell : SKNode {
             self.label = SKLabelNode.init(fontNamed: "Menlo")
             if let label = self.label {
                 label.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
-                label.position = CGPoint(x: rect.width / 2, y: rect.height / 2)
                 label.fontSize = 32
                 label.text = "9"
                 box.addChild(label)
