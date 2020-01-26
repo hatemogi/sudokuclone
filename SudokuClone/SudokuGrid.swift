@@ -12,9 +12,11 @@ class SudokuGrid : SKNode {
     private var cells : [SudokuCell] = []
     private let w = 56
     private let h = 56
-
-    public override init() {
+    private var board : Board?
+    
+    public init(board: Board) {
         super.init()
+        self.board = board
         let x = -w * 4 - w / 2
         let y = h * 3 + h / 2
         for r in 0..<9 {
@@ -26,12 +28,13 @@ class SudokuGrid : SKNode {
                 addChild(cell)
             }
         }
+        board.traverse(with: self.setNumber)
     }
     
     public func setNumber(row: Int, col: Int, number: Int) {
         cells[row * 9 + col].number = number
     }
-    
+   
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -41,4 +44,5 @@ class SudokuGrid : SKNode {
             CGRect.init(x: 0, y: 0, width: w * 9, height: h * 9)
         }
     }
+    
 }

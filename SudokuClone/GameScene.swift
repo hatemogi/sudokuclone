@@ -50,11 +50,10 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
                 
-        self.sudokuGrid = SudokuGrid.init()
+        self.sudokuGrid = SudokuGrid.init(board: board)
         
         if let grid = self.sudokuGrid {
             grid.position = CGPoint(x: 0, y: 0)
-            board.traverse(with: grid.setNumber)
             addChild(grid)
         }
     }
