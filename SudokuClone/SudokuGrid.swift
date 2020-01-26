@@ -35,6 +35,10 @@ class SudokuGrid : SKNode {
         cells[row * 9 + col].number = number
     }
    
+    public func touch(point: CGPoint) {
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

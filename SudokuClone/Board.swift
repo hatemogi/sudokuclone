@@ -82,6 +82,7 @@ class Board {
         }.joined(separator: "\n")
     }
     
+    // Traverse each numbers on board.
     func traverse(with: (Int, Int, Int) -> ()) {
         var rowIdx = 0
         var colIdx = 0
@@ -93,6 +94,11 @@ class Board {
             }
             rowIdx += 1
         }
+    }
+    
+    // Increase a number in the position. If it is over 9, it becomes 0
+    func rotate(row: Int, col: Int) -> Int {
+        return 0;
     }
     
     /*
