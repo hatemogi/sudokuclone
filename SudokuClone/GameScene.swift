@@ -13,7 +13,9 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    private var numberNode : SKLabelNode?
+    private var tiles : SKTileMapNode?
+    private var sudokuPiece : SKNode?
+    private var sudokuGrid : SudokuGrid?
     private var number : Int = 0
     
     override func didMove(to view: SKView) {
@@ -37,15 +39,12 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+                
+        self.sudokuGrid = SudokuGrid.init()
         
-        self.numberNode = SKLabelNode(fontNamed: "Menlo")
-
-        if let numberNode = self.numberNode {
-            numberNode.text = number.description
-            numberNode.fontSize = 45
-            numberNode.color = UIColor.white
-            numberNode.position = CGPoint(x: 0, y: 0)
-            addChild(numberNode)
+        if let grid = self.sudokuGrid {
+            grid.position = CGPoint(x: -100, y: -100)
+            addChild(grid)
         }
     }
     
@@ -99,6 +98,6 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         number += 1
-        numberNode?.text = number.description
+        // numberNode?.text = number.description
     }
 }

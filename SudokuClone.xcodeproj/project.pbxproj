@@ -18,6 +18,8 @@
 		542748A823DACB9900670F96 /* SudokuCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748A723DACB9900670F96 /* SudokuCloneTests.swift */; };
 		542748B323DACC5E00670F96 /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748B223DACC5E00670F96 /* BoardTest.swift */; };
 		542748B523DACC7700670F96 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748B423DACC7700670F96 /* Board.swift */; };
+		542748B723DC852800670F96 /* SudokuGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748B623DC852800670F96 /* SudokuGrid.swift */; };
+		542748B923DD363200670F96 /* SudokuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542748B823DD363200670F96 /* SudokuCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		542748A923DACB9900670F96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		542748B223DACC5E00670F96 /* BoardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 		542748B423DACC7700670F96 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		542748B623DC852800670F96 /* SudokuGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGrid.swift; sourceTree = "<group>"; };
+		542748B823DD363200670F96 /* SudokuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				5427489B23DACB9900670F96 /* LaunchScreen.storyboard */,
 				5427489E23DACB9900670F96 /* Info.plist */,
 				542748B423DACC7700670F96 /* Board.swift */,
+				542748B623DC852800670F96 /* SudokuGrid.swift */,
+				542748B823DD363200670F96 /* SudokuCell.swift */,
 			);
 			path = SudokuClone;
 			sourceTree = "<group>";
@@ -216,7 +222,9 @@
 			files = (
 				5427489323DACB9700670F96 /* GameScene.swift in Sources */,
 				5427489523DACB9700670F96 /* GameViewController.swift in Sources */,
+				542748B723DC852800670F96 /* SudokuGrid.swift in Sources */,
 				542748B523DACC7700670F96 /* Board.swift in Sources */,
+				542748B923DD363200670F96 /* SudokuCell.swift in Sources */,
 				5427488D23DACB9700670F96 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
