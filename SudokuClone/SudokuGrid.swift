@@ -10,12 +10,11 @@ import SpriteKit
 
 class SudokuGrid : SKNode {
     private var cells : [SudokuCell] = []
-    public var board : Board?
-    
+    private let w = 52
+    private let h = 52
+
     public override init() {
         super.init()
-        let w = 52
-        let h = 52
         let x = -w * 2 - w / 2
         let y = h * 5 + h / 2
         for r in 0..<9 {
@@ -29,14 +28,17 @@ class SudokuGrid : SKNode {
         }
     }
     
+    public func setNumber(row: Int, col: Int, number: Int) {
+        cells[row * 9 + col].number = number
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    
     override var frame: CGRect {
         get {
-            CGRect.init(x: 0, y: 0, width: 500, height: 500)
+            CGRect.init(x: 0, y: 0, width: w * 9, height: h * 9)
         }
     }
 }

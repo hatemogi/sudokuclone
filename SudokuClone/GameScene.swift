@@ -13,10 +13,20 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    private var tiles : SKTileMapNode?
-    private var sudokuPiece : SKNode?
     private var sudokuGrid : SudokuGrid?
-    private var number : Int = 0
+    private var board : Board = Board.from(string: """
+        123 456 789
+        456 789 123
+        089 123 456
+
+        234 567 891
+        567 801 234
+        891 234 567
+
+        345 678 912
+        678 912 345
+        912 345 678
+        """)
     
     override func didMove(to view: SKView) {
         
@@ -44,6 +54,7 @@ class GameScene: SKScene {
         
         if let grid = self.sudokuGrid {
             grid.position = CGPoint(x: -100, y: -100)
+            board.traverse(with: grid.setNumber)
             addChild(grid)
         }
     }
@@ -97,7 +108,6 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        number += 1
         // numberNode?.text = number.description
     }
 }

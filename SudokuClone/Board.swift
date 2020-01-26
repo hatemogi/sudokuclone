@@ -82,6 +82,19 @@ class Board {
         }.joined(separator: "\n")
     }
     
+    func traverse(with: (Int, Int, Int) -> ()) {
+        var rowIdx = 0
+        var colIdx = 0
+        rows.forEach { row in
+            colIdx = 0
+            row.forEach { col in
+                with(rowIdx, colIdx, col)
+                colIdx += 1
+            }
+            rowIdx += 1
+        }
+    }
+    
     /*
      Parses string to make a Board object.
      */
