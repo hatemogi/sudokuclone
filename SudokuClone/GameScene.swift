@@ -53,7 +53,7 @@ class GameScene: SKScene {
         self.sudokuGrid = SudokuGrid.init()
         
         if let grid = self.sudokuGrid {
-            grid.position = CGPoint(x: -100, y: -100)
+            grid.position = CGPoint(x: 0, y: 0)
             board.traverse(with: grid.setNumber)
             addChild(grid)
         }
