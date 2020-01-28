@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
+    private var statusLabel : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     private var sudokuGrid : SudokuGrid?
     private var board : Board = Board.from(string: """
@@ -48,19 +48,33 @@ class GameScene: SKScene {
             grid.position = CGPoint(x: 0, y: 0)
             addChild(grid)
         }
+        
+        self.statusLabel = self.childNode(withName: "//statusLabel") as? SKLabelNode
+        self.showStatus()
     }
     
+    private func showStatus() {
+        if let label = self.statusLabel {
+            switch (self.sudokuGrid?.status ?? .INCOMPLETE) {
+            case .COMPLETE:
+                label.text = "COMPLETE"
+                label.fontColor = UIColor.green
+            case .INVALID:
+                label.text = "INVALID"
+                label.fontColor = UIColor.red
+            case .INCOMPLETE:
+                label.text = "KEEP GOING"
+                label.fontColor = UIColor.yellow
+            }
+        }
+    }
     
     func touchDown(atPoint pos : CGPoint) {
-        /*if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }*/
         if let grid = self.sudokuGrid {
             if grid.calculateAccumulatedFrame().contains(pos) {
                 grid.touch(point: pos)
             }
+            self.showStatus()
         }
     }
     

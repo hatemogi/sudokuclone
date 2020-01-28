@@ -16,6 +16,24 @@ import Foundation
 
  */
 class Board {
+    enum Status {
+        case INCOMPLETE
+        case INVALID
+        case COMPLETE
+    }
+    
+    var status : Status {
+        get {
+            if hasComplete() {
+                return Status.COMPLETE
+            } else if isValid() {
+                return Status.INCOMPLETE
+            } else {
+                return Status.INVALID
+            }
+        }
+    }
+    
     var rows: Array<Array<Int>> = []
     let size = 9
     

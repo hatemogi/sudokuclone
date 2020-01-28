@@ -12,7 +12,12 @@ class SudokuGrid : SKNode {
     private var cells : [SudokuCell] = []
     private let w = 56
     private let h = 56
-    private var board : Board?
+    private var board : Board = Board()
+    public var status : Board.Status {
+        get {
+            return board.status
+        }
+    }
     
     public init(board: Board) {
         super.init()
@@ -39,8 +44,8 @@ class SudokuGrid : SKNode {
         let frame = self.calculateAccumulatedFrame()
         let row = 8 - Int(point.y - frame.minY) / w
         let col = Int(point.x - frame.minX) / w
-        board?.rotate(row: row, col: col)
-        board?.traverse(with: self.setNumber)
+        board.rotate(row: row, col: col)
+        board.traverse(with: self.setNumber)
         cells[row * 9 + col].run(SKAction.init(named: "cellRotate")!)
     }
     
